@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{1719D77E-ABA9-A2D5-5505-95A86D848687}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/ButtonManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/ScreenManager.cs">
     <Files>
-      <File FileName="Assets/scripts/ButtonManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/ButtonManager.cs" Line="7" Column="5" />
+      <File FileName="Assets/scripts/GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/ScreenManager.cs" Line="7" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -9,7 +11,7 @@
           <Node name="ColorTap" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
-                <Node name="ButtonManager.cs" selected="True" />
+                <Node name="GameManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>

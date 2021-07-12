@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
-
-    void OnMouseUp()
+    int color;
+    void ColorChange(int theColor)
     {
-        print("Clicked!");
+        //changes the color of the pressed buttons
+    }
+
+    void DetectColor()
+    {
+        //detects the color of the button that was pressed
+    }
+
+    void SetColor()
+    {
+        //make the buttons flash various colors
     }
 }
