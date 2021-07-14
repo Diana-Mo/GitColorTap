@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/GameManager.cs">
     <Files>
       <File FileName="Assets/scripts/ButtonManager.cs" Line="12" Column="1" />
-      <File FileName="Assets/scripts/GameManager.cs" Line="3" Column="1" />
+      <File FileName="Assets/scripts/GameManager.cs" Line="80" Column="7" />
       <File FileName="Assets/scripts/ScreenManager.cs" />
     </Files>
     <Pads>
@@ -21,7 +21,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f7ba0560-e681-48c8-9c60-4df49c409814" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0c6e025c-a6e6-42da-bc31-4d941c04b65b" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

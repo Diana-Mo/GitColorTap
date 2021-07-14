@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     private int round = 0;
     private gameStatus currentState = gameStatus.play;
     private int color = 0;
+    private bool ReadyToPickColor = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,34 @@ public class GameManager : MonoBehaviour
     private List<Color> ColorList = new List<Color>();
     //copied this from one of my previous codes. Not sure of which type should the list be so for now I put color.. 
     //(probably int or string though unless I make a separate script for colors?)
+
+    public void ChooseColor() //probably should use an IEnumerator
+    {
+
+    }
+
+    public void IsRoundOver()
+    {
+        //totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
+        if (/*num of correct tiles pressed) == total tiles for this round*/)
+        {
+            //have the number of tiles to press increase depending on how far into the game the player is
+            setCurrentGameState();
+            showMenu();
+        }
+    }
+
+    public void setCurrentGameState()
+    {
+        if (/*time’s out and not enough buttons pressed*/)
+        {
+            currentState = gameStatus.gameover;
+        }
+        else if (/*round is zero and zero keys are missed*/)
+        {
+            currentState = gameStatus.play;
+        }
+    }
 
     public void showMenu()
     {
@@ -76,6 +106,8 @@ public class GameManager : MonoBehaviour
         
     }
 
+    // the change score function would be responsible for changing the score
+    //
     void ChangeScore()
     {
 
