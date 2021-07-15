@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     //assign an int to a bunch of colors so that I could make the program to randomly pick an int and then the color that corresponds to the chosen int will be displayed.
 
     private List<Color> ColorList = new List<Color>();
-    //copied this from one of my previous codes. Not sure of which type should the list be so for now I put color.. 
+    //Not sure of which type should the list be so for now I put color.. 
     //(probably int or string though unless I make a separate script for colors?)
 
     public void ChooseColor() //probably should use an IEnumerator
@@ -90,7 +90,9 @@ public class GameManager : MonoBehaviour
 
     public void playBtnPressed()
     {
+        //describes what happenes when the play button is pressed
         switch (currentState)
+            //when the game state is set to play, the menu closes and the play screen pops up
         {
             default:
                 //set the number of rounds to complete before the color changes
