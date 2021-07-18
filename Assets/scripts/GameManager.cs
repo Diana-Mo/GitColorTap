@@ -36,38 +36,53 @@ public class GameManager : MonoBehaviour
         playBtn.gameObject.SetActive(false);
         showMenu();
     }
-    //assign an int to a bunch of colors so that I could make the program to randomly pick an int and then the color that corresponds to the chosen int will be displayed.
 
     private List<Color> ColorList = new List<Color>();
     //Not sure of which type should the list be so for now I put color.. 
     //(probably int or string though unless I make a separate script for colors?)
+
+    //assign an int to a bunch of colors so that I could make the program to randomly pick an int and then the color that corresponds to the chosen int will be displayed.
 
     public void ChooseColor() //probably should use an IEnumerator
     {
 
     }
 
+    //should put this in Update instead ?
+    public int Score(int btnsPressed, int round, float time, int conseqBtns, int currColor)
+    {
+        float currScore = 0.0f;
+        
+        /*
+        if correct color
+        {
+            add 10 points to currScore
+            currScore = conseqBtns*(conseqBtns - 1);
+        }
+        */
+    }
+
     public void IsRoundOver()
     {
         //totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
-        if (/*num of correct tiles pressed) == total tiles for this round*/)
-        {
-            //have the number of tiles to press increase depending on how far into the game the player is
-            setCurrentGameState();
-            showMenu();
-        }
+        // if (/*num of correct tiles pressed) == total tiles for this round*/)
+        // {
+        //     //have the number of tiles to press increase depending on how far into the game the player is
+        //     setCurrentGameState();
+        //     showMenu();
+        // }
     }
 
     public void setCurrentGameState()
     {
-        if (/*time’s out and not enough buttons pressed*/)
-        {
-            currentState = gameStatus.gameover;
-        }
-        else if (/*round is zero and zero keys are missed*/)
-        {
-            currentState = gameStatus.play;
-        }
+        // if (/*time’s out and not enough buttons pressed*/)
+        // {
+        //     currentState = gameStatus.gameover;
+        // }
+        // else if (/*round is zero and zero keys are missed*/)
+        // {
+        //     currentState = gameStatus.play;
+        // }
     }
 
     public void showMenu()
@@ -105,7 +120,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //update time (how do i do that?)
+        //have there be less and less time depending on the round 
+        //take away several seconds for misclicks
     }
 
     // the change score function would be responsible for changing the score
