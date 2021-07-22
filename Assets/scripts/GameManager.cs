@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
 
     //should put this in Update instead ?
-    public int Score(int btnsPressed, int round, float time, int conseqBtns, int currColor)
+    public float Score(int btnsPressed, int round, float time, int conseqBtns, int currColor)
     {
         float currScore = 0.0f;
         
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
             currScore = conseqBtns*(conseqBtns - 1);
         }
         */
+        return currScore;
     }
 
     public void IsRoundOver()
