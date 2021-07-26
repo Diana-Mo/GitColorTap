@@ -11,25 +11,44 @@ public class ButtonManager : MonoBehaviour
     //create multiple instances
     //arrange them
 
-    [SerializeField] private Text btnText;
+    // [SerializeField] private Text btnText;
     // [SerializeField] private Color btnColor;
-    // [SerializeField]
+    [SerializeField] private int MAX_BTNS = 6;
     // private Color currentColor;
-    [SerializeField] private Button[] buttons;
+    // [SerializeField] private Button[] buttons;
     
     public GameObject canvas;
-    public GameObject button;
+    public GameObject buttonPrefab;
+    // button[] btnArray = new button[9];
+    // List<button> btnArray = new ArrayList<button>();
 
     void Start () 
     {
-        GameObject newButton = Instantiate(button) as GameObject;
+        
+        // GameObject newButton2 = Instantiate(button) as GameObject;
         // newButton.transform.SetParent(newCanvas.transform, false);
-        newButton.transform.SetParent(canvas.transform);
-        // newButton.transform.SetParent(canvas.transform);
-        // newButton.transform.SetParent(canvas.transform);
+        
+        // newButton2.transform.SetParent(canvas.transform);
+        for (int i = 0; i < MAX_BTNS; i++) 
+        {
+            var buttonObj = Instantiate(buttonPrefab);
+            var button = buttonObj.GetComponent<Button>();
+            var image = buttonObj.GetComponent<Image>();
+            image.color = Color.red;
+            buttonObj.transform.SetParent(canvas.transform);
+            int buttonIndex = i;
+            buttonObj.name = buttonIndex.ToString();
+            button.onClick.AddListener(() => onButtonClicked(button, buttonIndex));
+        }
+
         // Color btnColor = GetComponent<Button> ().Color;
         // btnColor.normalColor = Color.red;
         // GetComponent<Button> ().btnColor = btnColor;
+    }
+
+    void onButtonClicked(Button btn, int index) {
+        Debug.Log("clicked: " + btn.name);
+
     }
 
     // int color;
