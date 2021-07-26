@@ -17,6 +17,7 @@ public class ButtonManager : MonoBehaviour
     // private Color currentColor;
     // [SerializeField] private Button[] buttons;
     
+    
     public GameObject canvas;
     public GameObject buttonPrefab;
     // button[] btnArray = new button[9];
