@@ -23,6 +23,14 @@ public class ButtonManager : MonoBehaviour
     // button[] btnArray = new button[9];
     // List<button> btnArray = new ArrayList<button>();
 
+//     string[] names = new string[] { "name1", "name2", "name3" };
+// Random rnd = new Random();
+// int index = rnd.Next(names.Length);
+// Console.WriteLine($"Name: {names[index]}");
+
+    //{green, pink, white, blue, yellow, purple} RGB
+    // Color[] colors = { new Color(0,1,0,1), new Color(1,0,0,1), new Color(1,1,1,1), new Color(0,0,1,1),  new Color(1,1,0,1), new Color(0, 0, 0, 1)};
+    // Random rndColor = new Random();
     void Start () 
     {
         
@@ -35,7 +43,9 @@ public class ButtonManager : MonoBehaviour
             var buttonObj = Instantiate(buttonPrefab);
             var button = buttonObj.GetComponent<Button>();
             var image = buttonObj.GetComponent<Image>();
-            image.color = Color.red;
+            Color[] colors = { new Color(0.6f, 0.4f, 0, 0.3f), new Color(0, 0.5f, 0.4f, 0.3f), new Color(1,1,1,1), new Color(0.6f, 0.4f, 0, 0.3f),  new Color(0, 0.35f, 0.5f, 0.3f), new Color(0.264f, 0.243f, 0, 0.050f)};
+            var randomIndex = Random.Range(0, colors.Length);
+            image.color = colors[randomIndex];
             buttonObj.transform.SetParent(canvas.transform);
             int buttonIndex = i;
             buttonObj.name = buttonIndex.ToString();
