@@ -36,20 +36,29 @@ public class ButtonManager : MonoBehaviour
         
         // GameObject newButton2 = Instantiate(button) as GameObject;
         // newButton.transform.SetParent(newCanvas.transform, false);
-        
         // newButton2.transform.SetParent(canvas.transform);
+
+        Color greenClr = new Color(0.349f, 0.126f, 0, 0.011f);
+        Color pinkClr = new Color(0.349f, 0.126f, 0, 0.011f);
+        Color whiteClr = new Color(1,1,1,1);
+        Color blueClr = new Color(0.384f, 0.085f, 0, 0.031f);
+        Color yellowClr = new Color(0, 0.052f, 0.204f, 0.019f);
+        Color purpleClr = new Color(0.264f, 0.243f, 0, 0.050f);
+//new Color(0, 0.052f, 0.204f, 0.019f), new Color(0.264f, 0.243f, 0, 0.050f)
+
         for (int i = 0; i < MAX_BTNS; i++) 
         {
             var buttonObj = Instantiate(buttonPrefab);
             var button = buttonObj.GetComponent<Button>();
             var image = buttonObj.GetComponent<Image>();
-            Color[] colors = { new Color(0.6f, 0.4f, 0, 0.3f), new Color(0, 0.5f, 0.4f, 0.3f), new Color(1,1,1,1), new Color(0.6f, 0.4f, 0, 0.3f),  new Color(0, 0.35f, 0.5f, 0.3f), new Color(0.264f, 0.243f, 0, 0.050f)};
+            Color[] colors = {greenClr, pinkClr, whiteClr, blueClr,  yellowClr, purpleClr};
             var randomIndex = Random.Range(0, colors.Length);
             image.color = colors[randomIndex];
             buttonObj.transform.SetParent(canvas.transform);
             int buttonIndex = i;
             buttonObj.name = buttonIndex.ToString();
-            button.onClick.AddListener(() => onButtonClicked(button, buttonIndex));
+            // buttonObj.
+            button.onClick.AddListener(() => onButtonClicked(button, buttonIndex, randomIndex));
         }
 
         // Color btnColor = GetComponent<Button> ().Color;
@@ -57,9 +66,9 @@ public class ButtonManager : MonoBehaviour
         // GetComponent<Button> ().btnColor = btnColor;
     }
 
-    void onButtonClicked(Button btn, int index) {
+    void onButtonClicked(Button btn, int index, int clrIndex) {
         Debug.Log("clicked: " + btn.name);
-
+        Debug.Log("color number: " + clrIndex);
     }
 
     // int color;
