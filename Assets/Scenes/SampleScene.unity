@@ -1295,6 +1295,7 @@ MonoBehaviour:
   canvas: {fileID: 1561072273}
   buttonPrefab: {fileID: 1397120351717140531, guid: 4852fe5b7253c48e2a3d686ef7d65c70,
     type: 3}
+  Colors: []
 --- !u!1 &1397289501
 GameObject:
   m_ObjectHideFlags: 0
