@@ -5,25 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    private static ButtonManager instance;
-
-    public static ButtonManager Instance
-    {
-        get
-        {
-            if(instance == null)
-            {
-                instance = GameObject.FindObjectOfType<ButtonManager>();
-            }
-
-            return instance;
-        }
-    }
-
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    
     // [SerializeField] private Text btnText;
     // [SerializeField] private Color btnColor;
     [SerializeField] private int MAX_BTNS;
@@ -40,13 +22,7 @@ public class ButtonManager : MonoBehaviour
     //{green, pink, white, blue, yellow, purple} RGB
     int totalPoints = 0;
     int targetColorIndex = 0;
-    Color greenClr = new Color(0.603f, 0.917f, 0.615f, 1);
-    Color pinkClr = new Color(0.945f, 0.674f, 0.780f, 1); 
-    Color whiteClr = new Color(1,1,1,1);
-    Color blueClr = new Color(0.584f, 0.749f, 0.917f, 1);
-    Color yellowClr = new Color(0.980f, 0.894f, 0.498f, 1);
-    Color purpleClr = new Color(0.741f, 0.549f, 0.929f, 1);
-    [SerializeField] public Color[] Colors;
+    
 
 
     void Start () 
@@ -61,7 +37,7 @@ public class ButtonManager : MonoBehaviour
             Button button = buttonObj.GetComponent<Button>();
             buttonObj.transform.SetParent(canvas.transform);
             // Image image = buttonObj.GetComponent<Image>();
-            int randomClrIndex = Random.Range(0, Colors.Length);
+            int randomClrIndex = Random.Range(0, GameManager.Instance.Colors.Length);
             // image.color = colors[randomClrIndex];
             int buttonIndex = i;
             var gameButton = buttonObj.GetComponent<GameButton>();

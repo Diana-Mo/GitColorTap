@@ -17,7 +17,7 @@ public class GameButton : MonoBehaviour
             colorIndex = value;
             //TODO:
             if (image != null && colorIndex >= 0)
-             image.color = ButtonManager.Instance.Colors[colorIndex];
+             image.color = GameManager.Instance.Colors[colorIndex];
         }
     }
 
