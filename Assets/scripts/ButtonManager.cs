@@ -21,9 +21,16 @@ public class ButtonManager : MonoBehaviour
 
     //{green, pink, white, blue, yellow, purple} RGB
     int totalPoints = 0;
-    int targetColorIndex = 0;
+    int targetColorIndex = -1;
     
-
+    public int TargetColorIndex {
+        get {
+            return targetColorIndex;
+        }
+        set {
+            targetColorIndex = value;
+        }
+    }
 
     void Start () 
     {
@@ -34,25 +41,30 @@ public class ButtonManager : MonoBehaviour
         for (int i = 0; i < MAX_BTNS; i++) 
         {
             GameObject buttonObj = Instantiate(buttonPrefab);
+            // buttonObj
             Button button = buttonObj.GetComponent<Button>();
             buttonObj.transform.SetParent(canvas.transform);
             // Image image = buttonObj.GetComponent<Image>();
             int randomClrIndex = Random.Range(0, GameManager.Instance.Colors.Length);
+            // GameManager.Instance.Colors.Length
             // image.color = colors[randomClrIndex];
             int buttonIndex = i;
             var gameButton = buttonObj.GetComponent<GameButton>();
+            // Debug.Log("randm color: " + randomClrIndex);
             gameButton.ColorIndex = randomClrIndex;
+            Debug.Log("randm color: " + gameButton.ColorIndex);
+            
             buttonObj.name = buttonIndex.ToString();
             button.onClick.AddListener(() => OnButtonClicked(buttonObj));
             // totalPoints += onButtonClicked(button, buttonIndex, randomClrIndex, randomTargetIndex, totalPoints);
         }
 
-        for (int i = 0; i < MAX_BTNS; i++)
-        {
+        // for (int i = 0; i < MAX_BTNS; i++)
+        // {
             // Color[] colors = {greenClr, pinkClr, whiteClr, blueClr,  yellowClr, purpleClr};
             // var randomClrIndex = Random.Range(0, colors.Length);
             // image.color = colors[randomClrIndex];
-        }
+        // }
     }
 
     void OnButtonClicked(GameObject btnObj) {

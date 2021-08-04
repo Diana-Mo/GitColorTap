@@ -56,19 +56,27 @@ public class GameManager : MonoBehaviour
     // private gameStatus currentState = gameStatus.play;
     // private int color = 0;
     // private bool ReadyToPickColor = true;
-    
-    // Start is called before the first frame update
-    // void Start()
-    // {
-    //     playBtn.gameObject.SetActive(false);
-    //     showMenu();
-    // }
 
     // private List<Color> ColorList = new List<Color>();
-    //Not sure of which type should the list be so for now I put color.. 
-    //(probably int or string though unless I make a separate script for colors?)
 
-    //assign an int to a bunch of colors so that I could make the program to randomly pick an int and then the color that corresponds to the chosen int will be displayed.
+    // Start is called before the first frame update
+    void Start()
+    {
+        // var mc = new GameManager();
+        //change the color text depending on the target index
+        if (GameManager.TargetColorIndex == 0)
+        {
+            // Try the following lines instead.
+        // var mc = new MyClass();
+        // mc.i = 10;
+        // mc.f();
+        // int p = mc.Prop;
+        }
+
+        // playBtn.gameObject.SetActive(false);
+        // showMenu();
+    }
+
 
     // public void ChooseColor() //probably should use an IEnumerator
     // {

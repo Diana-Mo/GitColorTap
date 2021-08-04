@@ -7,17 +7,18 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class GameButton : MonoBehaviour
 {
+    [SerializeField]
     private int colorIndex = -1;
     private Image image = null;
+
     public int ColorIndex {
         get {
-            return colorIndex = 0;
+            return colorIndex;
         }
         set {
             colorIndex = value;
-            //TODO:
-            if (image != null && colorIndex >= 0)
-             image.color = GameManager.Instance.Colors[colorIndex];
+            // i=xfdsl;jj //vs code stopped seeing errors, however they still show up in unity console
+            UpdateImageColor();
         }
     }
 
@@ -25,11 +26,13 @@ public class GameButton : MonoBehaviour
     void Start()
     {
         image = gameObject.GetComponent<Image>();
+        UpdateImageColor();
     }
 
     // Update is called once per frame
-    void Update()
+    void UpdateImageColor()
     {
-        
+        if (image != null && colorIndex >= 0)
+             image.color = GameManager.Instance.Colors[colorIndex];
     }
 }
