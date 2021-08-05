@@ -15,12 +15,14 @@ public class ButtonManager : MonoBehaviour
     
     public GameObject canvas;
     public GameObject buttonPrefab;
+    // public List<int> btnColorsSet = new List<int>();
+
     // button[] btnArray = new button[9];
     // List<button> btnArray = new ArrayList<button>();
     //string[] names = new string[] { "name1", "name2", "name3" };
 
     //{green, pink, white, blue, yellow, purple} RGB
-    int totalPoints = 0;
+    // int totalPoints = 0;
     // int targetColorIndex = -1;
     //make this a game manager variable and reference here from there through instance
     // public int TargetColorIndex {
@@ -50,7 +52,9 @@ public class ButtonManager : MonoBehaviour
             var gameButton = buttonObj.GetComponent<GameButton>();
             // Debug.Log("randm color: " + randomClrIndex);
             gameButton.ColorIndex = randomClrIndex;
-            Debug.Log("randm color: " + gameButton.ColorIndex);
+            // btnColorsSet.Add(gameButton.ColorIndex);
+    
+            // Debug.Log("randm color: " + gameButton.ColorIndex);
             
             buttonObj.name = buttonIndex.ToString();
             button.onClick.AddListener(() => GameManager.Instance.OnButtonClicked(buttonObj));

@@ -46,7 +46,11 @@ public class GameManager : MonoBehaviour
     private Text currentTimeLbl;
 
     [SerializeField] string[] colorNames;
-    public int targetColorIndex = -1;
+    int targetColorIndex = -1;
+    Color targetColor;
+    int totalPoints = 0;
+
+    public GameObject canvas;
     // [SerializeField]
     // private Text playBtnLbl;
     // [SerializeField]
@@ -67,15 +71,14 @@ public class GameManager : MonoBehaviour
     {
         // var mc = new GameManager();
         // colors = {greenClr, pinkClr, whiteClr, blueClr,  yellowClr, purpleClr};
-        //change the color text depending on the target index
+        // var gameButton = btnObj.GetComponent<GameButton>();
+        // targetColor = canvas.transform.GetChild(0).gameObject;
+        // targetColorIndex = ButtonManager.btnColorsSet
         targetColorIndex = Random.Range(0, 5);
         // Debug.Log("target color: " + targetColorIndex);
         currentColorLbl.text = colorNames[targetColorIndex];
-            // Try the following lines instead.
-        // var mc = new MyClass();
-        // mc.i = 10;
-        // mc.f();
-        // int p = mc.Prop;
+        currentColorLbl.color = Colors[targetColorIndex];
+        // currentColorLbl.color = targetColor;
 
         // playBtn.gameObject.SetActive(false);
         // showMenu();
@@ -83,9 +86,31 @@ public class GameManager : MonoBehaviour
 
     public void OnButtonClicked(GameObject btnObj)
     {
+        //TODO: fix bug
+        //target color should be one of the colors of the buttons
+        //get random child object of the button panel and take its color as the target color
 
+        var gameButton = btnObj.GetComponent<GameButton>();
+        int clrIndex = gameButton.ColorIndex;
+        // Debug.Log("color number: " + clrIndex);
+        // Debug.Log("target color: " + targetIndex);
+        if (clrIndex == targetColorIndex)
+        {
+            totalPoints += 5;
+        }
     }
-    
+
+    // Update is called once per frame 
+    void Update()
+    {
+        UpdateScore(totalPoints);
+    }
+    void UpdateScore(int totPoints)
+    {
+        currentScoreLbl.text = totalPoints.ToString();
+        // return currentColorLbl.text; (if method returns string)
+    }
+
     // public void ChooseColor() //probably should use an IEnumerator
     // {
 

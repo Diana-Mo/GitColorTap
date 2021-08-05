@@ -805,7 +805,7 @@ MonoBehaviour:
   - BLUE
   - YELLOW
   - PURPLE
-  targetColorIndex: -1
+  canvas: {fileID: 1561072273}
 --- !u!4 &806389354
 Transform:
   m_ObjectHideFlags: 0
@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7287368, g: 1, b: 0.7122642, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
