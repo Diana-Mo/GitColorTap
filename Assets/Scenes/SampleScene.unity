@@ -798,6 +798,14 @@ MonoBehaviour:
   currentScoreLbl: {fileID: 1314941075}
   currentColorLbl: {fileID: 1430867544}
   currentTimeLbl: {fileID: 1210527451}
+  colorNames:
+  - GREEN
+  - PINK
+  - WHITE
+  - BLUE
+  - YELLOW
+  - PURPLE
+  targetColorIndex: -1
 --- !u!4 &806389354
 Transform:
   m_ObjectHideFlags: 0

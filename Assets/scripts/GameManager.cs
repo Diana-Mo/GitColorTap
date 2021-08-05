@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour
     private Text currentColorLbl;
     [SerializeField]
     private Text currentTimeLbl;
+
+    [SerializeField] string[] colorNames;
+    public int targetColorIndex = -1;
     // [SerializeField]
     // private Text playBtnLbl;
     // [SerializeField]
@@ -63,21 +66,26 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // var mc = new GameManager();
+        // colors = {greenClr, pinkClr, whiteClr, blueClr,  yellowClr, purpleClr};
         //change the color text depending on the target index
-        if (GameManager.TargetColorIndex == 0)
-        {
+        targetColorIndex = Random.Range(0, 5);
+        // Debug.Log("target color: " + targetColorIndex);
+        currentColorLbl.text = colorNames[targetColorIndex];
             // Try the following lines instead.
         // var mc = new MyClass();
         // mc.i = 10;
         // mc.f();
         // int p = mc.Prop;
-        }
 
         // playBtn.gameObject.SetActive(false);
         // showMenu();
     }
 
+    public void OnButtonClicked(GameObject btnObj)
+    {
 
+    }
+    
     // public void ChooseColor() //probably should use an IEnumerator
     // {
 

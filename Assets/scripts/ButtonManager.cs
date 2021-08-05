@@ -21,23 +21,21 @@ public class ButtonManager : MonoBehaviour
 
     //{green, pink, white, blue, yellow, purple} RGB
     int totalPoints = 0;
-    int targetColorIndex = -1;
-    
-    public int TargetColorIndex {
-        get {
-            return targetColorIndex;
-        }
-        set {
-            targetColorIndex = value;
-        }
-    }
+    // int targetColorIndex = -1;
+    //make this a game manager variable and reference here from there through instance
+    // public int TargetColorIndex {
+    //     get {
+    //         return targetColorIndex;
+    //     }
+    //     set {
+    //         targetColorIndex = value;
+    //     }
+    // }
 
     void Start () 
     {
 
         // colors = {greenClr, pinkClr, whiteClr, blueClr,  yellowClr, purpleClr};
-        targetColorIndex = Random.Range(0, 5);
-        Debug.Log("target color: " + targetColorIndex);
         for (int i = 0; i < MAX_BTNS; i++) 
         {
             GameObject buttonObj = Instantiate(buttonPrefab);
@@ -55,7 +53,7 @@ public class ButtonManager : MonoBehaviour
             Debug.Log("randm color: " + gameButton.ColorIndex);
             
             buttonObj.name = buttonIndex.ToString();
-            button.onClick.AddListener(() => OnButtonClicked(buttonObj));
+            button.onClick.AddListener(() => GameManager.Instance.OnButtonClicked(buttonObj));
             // totalPoints += onButtonClicked(button, buttonIndex, randomClrIndex, randomTargetIndex, totalPoints);
         }
 
@@ -67,32 +65,31 @@ public class ButtonManager : MonoBehaviour
         // }
     }
 
-    void OnButtonClicked(GameObject btnObj) {
-        // Debug.Log("clicked: " + btn.name);
-        var gameButton = btnObj.GetComponent<GameButton>();
+    // void OnButtonClicked(GameObject btnObj) {
+        // Debug.Log("clicked: " + btnObj.name);
+        // var gameButton = btnObj.GetComponent<GameButton>();
         
-        int clrIndex = gameButton.ColorIndex;
-        Debug.Log("color number: " + clrIndex);
+        // int clrIndex = gameButton.ColorIndex;
+        // Debug.Log("color number: " + clrIndex);
         // Debug.Log("target color: " + targetIndex);
-        if (clrIndex == targetColorIndex)
-        {
-            totalPoints += 5;
-            Debug.Log("score: " + totalPoints);
-            for (int i = 0; i < MAX_BTNS; i++) 
-            {
-            // AssignColors(image, colors, clrIndex);
-                // AssignColors(image, colors, clrIndex);
-            }
-        }
-        // return points;
-    }
+        // if (clrIndex == GameManager.Instance.targetColorIndex)
+        // {
+        //     totalPoints += 5;
+        //     Debug.Log("score: " + totalPoints);
+        //     for (int i = 0; i < MAX_BTNS; i++) 
+        //     {
+        //     AssignColors(image, colors, clrIndex);
+        //         AssignColors(image, colors, clrIndex);
+        //     }
+        // }
+    // }
 
 // void AssignColors(Image img, Color[] clrs, int rndClrIndex)
-    void AssignColors(Image img, Color[] clrs, int rndClrIndex)
-    {
-        for (int i = 0; i < MAX_BTNS; i++)
-        {
-        img.color = clrs[rndClrIndex];
-        }
-    }
+    // void AssignColors(Image img, Color[] clrs, int rndClrIndex)
+    // {
+    //     for (int i = 0; i < MAX_BTNS; i++)
+    //     {
+    //     img.color = clrs[rndClrIndex];
+    //     }
+    // }
 }
