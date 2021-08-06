@@ -796,16 +796,8 @@ MonoBehaviour:
   - {r: 0.98, g: 0.894, b: 0.498, a: 1}
   - {r: 0.741, g: 0.549, b: 0.929, a: 1}
   currentScoreLbl: {fileID: 1314941075}
-  currentColorLbl: {fileID: 1430867544}
-  currentTimeLbl: {fileID: 1210527451}
-  colorNames:
-  - GREEN
-  - PINK
-  - WHITE
-  - BLUE
-  - YELLOW
-  - PURPLE
-  canvas: {fileID: 1561072273}
+  btnCanvas: {fileID: 1561072273}
+  playScreen: {fileID: 1307612297}
 --- !u!4 &806389354
 Transform:
   m_ObjectHideFlags: 0
@@ -1434,6 +1426,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_BTNS: 16
+  currentColorLbl: {fileID: 1430867544}
+  colorNames:
+  - GREEN
+  - PINK
+  - WHITE
+  - BLUE
+  - YELLOW
+  - PURPLE
   canvas: {fileID: 1561072273}
   buttonPrefab: {fileID: 1397120351717140531, guid: 4852fe5b7253c48e2a3d686ef7d65c70,
     type: 3}

@@ -40,17 +40,28 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Text currentScoreLbl;
-    [SerializeField]
-    private Text currentColorLbl;
-    [SerializeField]
+    //[SerializeField]
+    // private Text currentColorLbl;
+    // [SerializeField]
     private Text currentTimeLbl;
 
-    [SerializeField] string[] colorNames;
+    // [SerializeField] string[] colorNames;
     int targetColorIndex = -1;
     Color targetColor;
     int totalPoints = 0;
 
-    public GameObject canvas;
+    // int targetColorIndex_ = -1;
+    // public int TargetColorIndex {
+    //     get {
+    //         return targetColorIndex_;
+    //     }
+    //     set {
+    //         targetColorIndex_ = value;
+    //         // todo: update 'targetColor' field
+    //     }
+    // }
+    public GameObject btnCanvas;
+    public GameObject playScreen;
     // [SerializeField]
     // private Text playBtnLbl;
     // [SerializeField]
@@ -72,12 +83,12 @@ public class GameManager : MonoBehaviour
         // var mc = new GameManager();
         // colors = {greenClr, pinkClr, whiteClr, blueClr,  yellowClr, purpleClr};
         // var gameButton = btnObj.GetComponent<GameButton>();
-        // targetColor = canvas.transform.GetChild(0).gameObject;
+        // targetColor = canvas.transform.GetChild(Random.Range(0, 5)).gameObject;
         // targetColorIndex = ButtonManager.btnColorsSet
-        targetColorIndex = Random.Range(0, 5);
-        // Debug.Log("target color: " + targetColorIndex);
-        currentColorLbl.text = colorNames[targetColorIndex];
-        currentColorLbl.color = Colors[targetColorIndex];
+        // targetColorIndex = Random.Range(0, 5);
+        // Debug.Log("target color: " + TargetColorIndex);
+        // currentColorLbl.text = colorNames[TargetColorIndex];
+        // currentColorLbl.color = Colors[TargetColorIndex];
         // currentColorLbl.color = targetColor;
 
         // playBtn.gameObject.SetActive(false);
@@ -94,7 +105,8 @@ public class GameManager : MonoBehaviour
         int clrIndex = gameButton.ColorIndex;
         // Debug.Log("color number: " + clrIndex);
         // Debug.Log("target color: " + targetIndex);
-        if (clrIndex == targetColorIndex)
+        var buttonManager = playScreen.GetComponent<ButtonManager>();
+        if (clrIndex == buttonManager.TargetColorIndex)
         {
             totalPoints += 5;
         }

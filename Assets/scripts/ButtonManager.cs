@@ -12,9 +12,22 @@ public class ButtonManager : MonoBehaviour
     // [SerializeField] 
     private GameObject[] buttonObjects;
     
-    
+    [SerializeField] private Text currentColorLbl;
+    [SerializeField] string[] colorNames;
+    // [SerializeField] public Color[] Colors;
     public GameObject canvas;
     public GameObject buttonPrefab;
+    // int targetColorIndex = -1;
+    int targetColorIndex_ = -1;
+    public int TargetColorIndex {
+        get {
+            return targetColorIndex_;
+        }
+        set {
+            targetColorIndex_ = value;
+            // todo: update 'targetColor' field
+        }
+    }
     // public List<int> btnColorsSet = new List<int>();
 
     // button[] btnArray = new button[9];
@@ -49,9 +62,9 @@ public class ButtonManager : MonoBehaviour
             // GameManager.Instance.Colors.Length
             // image.color = colors[randomClrIndex];
             int buttonIndex = i;
-            var gameButton = buttonObj.GetComponent<GameButton>();
+            var gameButton1 = buttonObj.GetComponent<GameButton>();
             // Debug.Log("randm color: " + randomClrIndex);
-            gameButton.ColorIndex = randomClrIndex;
+            gameButton1.ColorIndex = randomClrIndex;
             // btnColorsSet.Add(gameButton.ColorIndex);
     
             // Debug.Log("randm color: " + gameButton.ColorIndex);
@@ -60,6 +73,14 @@ public class ButtonManager : MonoBehaviour
             button.onClick.AddListener(() => GameManager.Instance.OnButtonClicked(buttonObj));
             // totalPoints += onButtonClicked(button, buttonIndex, randomClrIndex, randomTargetIndex, totalPoints);
         }
+
+// GetChildCount
+        var buttonGo = canvas.transform.GetChild(Random.Range(0, MAX_BTNS));
+        var gameButton = buttonGo.GetComponent<GameButton>();
+        targetColorIndex_ = gameButton.ColorIndex;
+        currentColorLbl.text = colorNames[targetColorIndex_];
+        currentColorLbl.color = GameManager.Instance.Colors[targetColorIndex_];
+        // Debug.Log("target color: " + targetColorIndex);
 
         // for (int i = 0; i < MAX_BTNS; i++)
         // {
