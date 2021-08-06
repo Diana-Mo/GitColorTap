@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
         if (clrIndex == buttonManager.TargetColorIndex)
         {
             totalPoints += 5;
+            AssignColors();
         }
     }
 
@@ -116,6 +117,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateScore(totalPoints);
+    }
+
+    void AssignColors()
+    {
+        for (int i = 0; i < 16; i++) 
+        {
+            var currButton = btnCanvas.transform.GetChild(i);
+            int randomClrIndex = Random.Range(0, Colors.Length);
+            var gameButton1 = currButton.GetComponent<GameButton>();
+            // Debug.Log("randm color: " + randomClrIndex);
+            gameButton1.ColorIndex = randomClrIndex;
+        }
     }
     void UpdateScore(int totPoints)
     {
