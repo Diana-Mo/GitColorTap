@@ -75,11 +75,7 @@ public class ButtonManager : MonoBehaviour
         }
 
 // GetChildCount
-        var buttonGo = canvas.transform.GetChild(Random.Range(0, MAX_BTNS));
-        var gameButton = buttonGo.GetComponent<GameButton>();
-        targetColorIndex_ = gameButton.ColorIndex;
-        currentColorLbl.text = colorNames[targetColorIndex_];
-        currentColorLbl.color = GameManager.Instance.Colors[targetColorIndex_];
+        SetTargetColorLbl();
         // Debug.Log("target color: " + targetColorIndex);
 
         // for (int i = 0; i < MAX_BTNS; i++)
@@ -90,7 +86,14 @@ public class ButtonManager : MonoBehaviour
         // }
     }
 
-    
+    public void SetTargetColorLbl()
+    {
+        var buttonGo = canvas.transform.GetChild(Random.Range(0, MAX_BTNS));
+        var gameButton = buttonGo.GetComponent<GameButton>();
+        targetColorIndex_ = gameButton.ColorIndex;
+        currentColorLbl.text = colorNames[targetColorIndex_];
+        currentColorLbl.color = GameManager.Instance.Colors[targetColorIndex_];
+    }    
 
     // void OnButtonClicked(GameObject btnObj) {
         // Debug.Log("clicked: " + btnObj.name);

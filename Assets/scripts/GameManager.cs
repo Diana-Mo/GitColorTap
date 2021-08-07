@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
         {
             totalPoints += 5;
             AssignColors();
+            buttonManager.SetTargetColorLbl();
         }
     }
 
