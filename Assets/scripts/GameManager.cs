@@ -42,8 +42,9 @@ public class GameManager : MonoBehaviour
     private Text currentScoreLbl;
     //[SerializeField]
     // private Text currentColorLbl;
-    // [SerializeField]
+    [SerializeField]
     private Text currentTimeLbl;
+    private float timeStart = 30.0f;
 
     // [SerializeField] string[] colorNames;
     int targetColorIndex = -1;
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentTimeLbl.text = timeStart.ToString();
         // var mc = new GameManager();
         // colors = {greenClr, pinkClr, whiteClr, blueClr,  yellowClr, purpleClr};
         // var gameButton = btnObj.GetComponent<GameButton>();
@@ -118,6 +120,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateScore(totalPoints);
+        timeStart -= Time.deltaTime;
+	    currentTimeLbl.text = timeStart.ToString("0.0");
     }
 
     void AssignColors()
