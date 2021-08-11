@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameButton : MonoBehaviour
 {
     [SerializeField]
-    private int colorIndex = -1;
+    private int colorIndex = -1;    
     private Image image = null;
 
     public int ColorIndex {
