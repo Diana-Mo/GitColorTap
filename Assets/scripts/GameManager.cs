@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentTimeLbl.text = timeStart.ToString();
+        currentTime = timeStart;
 
         // playBtn.gameObject.SetActive(false);
         // showMenu();
@@ -72,12 +73,16 @@ public class GameManager : MonoBehaviour
             totalPoints += conseqBtns*(conseqBtns - 1);
             AssignColors();
             buttonManager.SetTargetColorLbl();
+            currentTime += 5.00f;
         }
         else
         {
             correctBtn = false;
             conseqBtns = 0;
             totalPoints -= 5;
+            if (totalPoints < 0)
+                totalPoints = 0;
+            currentTime += -5.00f;
         }
     }
 
@@ -87,9 +92,16 @@ public class GameManager : MonoBehaviour
         UpdateScore(totalPoints);
         // timeStart -= Time.deltaTime;
         // currentTimeLbl.text = timeStart.ToString("0.0");
-        currentTime = timeStart - Time.deltaTime;
-	    currentTimeLbl.text = currentTime.ToString("0.0");
+        if (currentTime >= 0.00f)
+        {
+        currentTime = currentTime - Time.deltaTime;
         // currentTime += correctBtn ? (5) : (-5); 
+        }
+        else
+        {
+            currentTime = 0;
+        }
+        currentTimeLbl.text = currentTime.ToString("0.0");
     }
 
     void AssignColors()
