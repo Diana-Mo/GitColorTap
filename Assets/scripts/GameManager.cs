@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// public enum gameStatus
-// {
-//     next, play, gameover, win
-// }
+public enum gameStatus
+{
+    menu, play, gameover, next
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -39,23 +39,27 @@ public class GameManager : MonoBehaviour
     Color targetColor;
     int totalPoints = 0;
     public GameObject btnCanvas;
-    public GameObject playScreen;
+    [SerializeField] public GameObject playScreen;
+    [SerializeField] public GameObject menuScreen;
     int conseqBtns = 0;
     bool correctBtn = false;
-    // [SerializeField]
-    // private Text playBtnLbl;
-    // [SerializeField]
-    // private Button playBtn;
+    [SerializeField]
+    private Text playBtnLbl;
+    [SerializeField]
+    private Button playBtn;
     // private Text currentRoundLbl;
     // private int round = 0;
-    // private gameStatus currentState = gameStatus.play;
+    // private gameStatus currentState = gameStatus.menu;
+    private gameStatus currentState = gameStatus.play;
 
     // Start is called before the first frame update
     void Start()
     {
         currentTimeLbl.text = timeStart.ToString();
         currentTime = timeStart;
-
+        // currentState = gameStatus.menu; 
+        currentState = gameStatus.play;
+        showMenu();
         // playBtn.gameObject.SetActive(false);
         // showMenu();
     }
@@ -94,7 +98,7 @@ public class GameManager : MonoBehaviour
         // currentTimeLbl.text = timeStart.ToString("0.0");
         if (currentTime >= 0.00f)
         {
-        currentTime = currentTime - Time.deltaTime;
+        currentTime = currentTime - Time.deltaTime; 
         // currentTime += correctBtn ? (5) : (-5); 
         }
         else
@@ -102,6 +106,7 @@ public class GameManager : MonoBehaviour
             currentTime = 0;
         }
         currentTimeLbl.text = currentTime.ToString("0.0");
+        setCurrentGameState();
     }
 
     void AssignColors()
@@ -121,46 +126,42 @@ public class GameManager : MonoBehaviour
         // return currentColorLbl.text; (if method returns string)
     }
 
-    // public void IsRoundOver()
-    // {
-    //     //totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
-    //     // if (/*num of correct tiles pressed) == total tiles for this round*/)
-    //     // {
-    //     //     //have the number of tiles to press increase depending on how far into the game the player is
-    //     //     setCurrentGameState();
-    //     //     showMenu();
-    //     // }
-    // }
+    public void setCurrentGameState()
+    {
+        //if /*time’s out and not enough buttons pressed*/
+        if (currentTime <= 0.0)
+        {
+            currentState = gameStatus.gameover;
+            showMenu();
+        }
+        // else if (/*round is zero and zero keys are missed*/)
+        // {
+            // currentState = gameStatus.play;
+        // }
+    }
 
-    // public void setCurrentGameState()
-    // {
-    //     // if (/*time’s out and not enough buttons pressed*/)
-    //     // {
-    //     //     currentState = gameStatus.gameover;
-    //     // }
-    //     // else if (/*round is zero and zero keys are missed*/)
-    //     // {
-    //     //     currentState = gameStatus.play;
-    //     // }
-    // }
+    public void showMenu()
+    {
+        switch (currentState)
+        {
+            case gameStatus.gameover:
+                playBtnLbl.text = "Play Again";
+                playScreen.SetActive(false);
+                menuScreen.SetActive(true);
+                break;
+            case gameStatus.play:
+                playScreen.SetActive(true);
+                menuScreen.SetActive(false);
+                break;
+            case gameStatus.menu:
+                playBtnLbl.text = "Play";
+                playScreen.SetActive(false);
+                menuScreen.SetActive(true);
+                break;
+        }
 
-    // public void showMenu()
-    // {
-    //     switch (currentState)
-    //     {
-    //         case gameStatus.gameover:
-    //             playBtnLbl.text = "Play Again";
-    //             break;
-    //         case gameStatus.play:
-    //             playBtnLbl.text = "Play";
-    //             break;
-    //         case gameStatus.win:
-    //             playBtnLbl.text = "Play";
-    //             break;
-    //     }
-
-    //     playBtn.gameObject.SetActive(true);
-    // }
+        playBtn.gameObject.SetActive(true);
+    }
 
     // public void playBtnPressed()
     // {
@@ -174,5 +175,16 @@ public class GameManager : MonoBehaviour
     //             //make the goal color the chosen color
     //             break;
     //     }
+    // }
+
+      // public void IsRoundOver()
+    // {
+    //     //totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
+    //     // if (/*num of correct tiles pressed) == total tiles for this round*/)
+    //     // {
+    //     //     //have the number of tiles to press increase depending on how far into the game the player is
+    //     //     setCurrentGameState();
+    //     //     showMenu();
+    //     // }
     // }
 }
