@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 154891825}
   - component: {fileID: 154891824}
   m_Layer: 5
-  m_Name: PlyBtnText
+  m_Name: PlayBtnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,8 +800,9 @@ MonoBehaviour:
   btnCanvas: {fileID: 1561072273}
   playScreen: {fileID: 1307612297}
   menuScreen: {fileID: 1045323815}
-  playBtnLbl: {fileID: 154891824}
+  menuCanvas: {fileID: 1195553082}
   playBtn: {fileID: 1529193966}
+  playBtnLbl: {fileID: 154891824}
 --- !u!4 &806389354
 Transform:
   m_ObjectHideFlags: 0
@@ -1091,7 +1092,7 @@ GameObject:
   - component: {fileID: 1195553085}
   - component: {fileID: 1195553084}
   m_Layer: 5
-  m_Name: Button Panel
+  m_Name: Menu Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1249,7 +1250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1307612298
 MonoBehaviour:
   m_ObjectHideFlags: 0

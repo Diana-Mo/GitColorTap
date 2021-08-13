@@ -43,27 +43,34 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject menuScreen;
     int conseqBtns = 0;
     bool correctBtn = false;
-    [SerializeField]
-    private Text playBtnLbl;
-    [SerializeField]
-    private Button playBtn;
+    [SerializeField] private GameObject menuCanvas;
+    [SerializeField] private Button playBtn;
+    [SerializeField] private Text playBtnLbl;
     // private Text currentRoundLbl;
     // private int round = 0;
     // private gameStatus currentState = gameStatus.menu;
-    private gameStatus currentState = gameStatus.play;
+    private gameStatus currentState = gameStatus.menu;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentTimeLbl.text = timeStart.ToString();
-        currentTime = timeStart;
-        // currentState = gameStatus.menu; 
-        currentState = gameStatus.play;
+        currentState = gameStatus.menu;
         showMenu();
-        // playBtn.gameObject.SetActive(false);
-        // showMenu();
+        playBtn.onClick.AddListener(() => PlayBtnClicked());
     }
 
+    private void PlayBtnClicked()
+    {
+        currentState = gameStatus.play;
+        showMenu();
+        StartTime();
+    }
+
+    private void StartTime()
+    {
+        currentTimeLbl.text = timeStart.ToString();
+        currentTime = timeStart;
+    }
     public void OnButtonClicked(GameObject btnObj)
     {
         var gameButton = btnObj.GetComponent<GameButton>();
@@ -129,7 +136,7 @@ public class GameManager : MonoBehaviour
     public void setCurrentGameState()
     {
         //if /*time’s out and not enough buttons pressed*/
-        if (currentTime <= 0.0)
+        if (currentState != gameStatus.menu && currentTime <= 0.0)
         {
             currentState = gameStatus.gameover;
             showMenu();
@@ -160,7 +167,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        playBtn.gameObject.SetActive(true);
+        // playBtn.gameObject.SetActive(true);
     }
 
     // public void playBtnPressed()
