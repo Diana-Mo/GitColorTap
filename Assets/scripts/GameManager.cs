@@ -33,17 +33,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Color[] Colors;
     [SerializeField] private Text currentScoreLbl;
     [SerializeField] private Text currentTimeLbl;
-    float timeStart = 10.0f;
+    float timeStart = 10.3f;
     float currentTime = 0.0f;
-    int targetColorIndex = -1;
-    Color targetColor;
+    // int targetColorIndex = -1;
+    // Color targetColor;
     int totalPoints = 0;
     public GameObject btnCanvas;
     [SerializeField] public GameObject playScreen;
     [SerializeField] public GameObject menuScreen;
     int conseqBtns = 0;
     bool correctBtn = false;
-    [SerializeField] private GameObject menuCanvas;
+    // [SerializeField] private GameObject menuCanvas;
     [SerializeField] private Button playBtn;
     [SerializeField] private Text playBtnLbl;
     // private Text currentRoundLbl;
@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         currentState = gameStatus.play;
         showMenu();
         StartTime();
+        totalPoints = 0;
     }
 
     private void StartTime()
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour
             totalPoints += conseqBtns*(conseqBtns - 1);
             AssignColors();
             buttonManager.SetTargetColorLbl();
-            currentTime += 5.00f;
+            // currentTime += 5.00f;
         }
         else
         {
@@ -93,14 +94,15 @@ public class GameManager : MonoBehaviour
             totalPoints -= 5;
             if (totalPoints < 0)
                 totalPoints = 0;
-            currentTime += -5.00f;
+            // currentTime += -5.00f;
         }
     }
 
     // Update is called once per frame 
     void Update()
     {
-        UpdateScore(totalPoints);
+        // UpdateScore(totalPoints);
+        currentScoreLbl.text = totalPoints.ToString();
         // timeStart -= Time.deltaTime;
         // currentTimeLbl.text = timeStart.ToString("0.0");
         if (currentTime >= 0.00f)
@@ -127,11 +129,12 @@ public class GameManager : MonoBehaviour
             gameButton1.ColorIndex = randomClrIndex;
         }
     }
-    void UpdateScore(int totPoints)
-    {
-        currentScoreLbl.text = totalPoints.ToString();
+    
+    // void UpdateScore(int totPoints)
+    // {
+        // currentScoreLbl.text = totalPoints.ToString();
         // return currentColorLbl.text; (if method returns string)
-    }
+    // }
 
     public void setCurrentGameState()
     {
