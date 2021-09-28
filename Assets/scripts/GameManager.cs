@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum gameStatus
 {
-    menu, play, gameover, next
+    menu, play, gameover, nextround
 }
 
 public class GameManager : MonoBehaviour
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             AssignColors();
             buttonManager.SetTargetColorLbl();
             // currentTime += 5.00f;
-        }
+        } 
         else
         {
             correctBtn = false;
@@ -148,6 +148,11 @@ public class GameManager : MonoBehaviour
         // {
             // currentState = gameStatus.play;
         // }
+
+        //TO DO:
+        //if colorsTapped = ColorsToTap
+        //currectState = gameStatus.nextround; 
+        //(will this even work or should I have a separate method instead of using gameStatus?)
     }
 
     public void showMenu()
@@ -167,6 +172,13 @@ public class GameManager : MonoBehaviour
                 playBtnLbl.text = "Play";
                 playScreen.SetActive(false);
                 menuScreen.SetActive(true);
+                break;
+                
+            //TO DO:
+            case gameStatus.nextround:
+                //update the roundNum
+                //reset time?
+                //Score + (roundNum)*10
                 break;
         }
 
