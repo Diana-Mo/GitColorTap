@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
                 playScreen.SetActive(false);
                 menuScreen.SetActive(true);
                 break;
-                
+
             //TO DO:
             case gameStatus.nextround:
                 //update the roundNum
@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
         // playBtn.gameObject.SetActive(true);
     }
 
-    // public void playBtnPressed()
+    // public void playBtnPressed() 
     // {
     //     //describes what happenes when the play button is pressed
     //     switch (currentState)
