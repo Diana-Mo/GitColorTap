@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     // private Text currentRoundLbl;
     // private int round = 0;
     // private gameStatus currentState = gameStatus.menu;
+    [SerializeField] public AudioClip sfxClick;
+    private AudioSource audioSource;
     private gameStatus currentState = gameStatus.menu;
 
     // Start is called before the first frame update
@@ -57,10 +59,12 @@ public class GameManager : MonoBehaviour
         currentState = gameStatus.menu;
         showMenu();
         playBtn.onClick.AddListener(() => PlayBtnClicked());
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void PlayBtnClicked()
     {
+        audioSource.PlayOneShot(sfxClick);
         currentState = gameStatus.play;
         showMenu();
         StartTime();
@@ -74,6 +78,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnButtonClicked(GameObject btnObj)
     {
+        audioSource.PlayOneShot(sfxClick);
         var gameButton = btnObj.GetComponent<GameButton>();
         int clrIndex = gameButton.ColorIndex;
         var buttonManager = playScreen.GetComponent<ButtonManager>();
