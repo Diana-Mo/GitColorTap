@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
     // private int round = 0;
     // private gameStatus currentState = gameStatus.menu;
     [SerializeField] public AudioClip sfxClick;
+
+    [SerializeField] public AudioClip sfxColors;
+        [SerializeField] public AudioClip sfxRightColor;
+
     private AudioSource audioSource;
     private gameStatus currentState = gameStatus.menu;
 
