@@ -52,7 +52,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public AudioClip sfxClick;
 
     [SerializeField] public AudioClip sfxColors;
-        [SerializeField] public AudioClip sfxRightColor;
+    [SerializeField] public AudioClip sfxRightColor;
+    [SerializeField] public AudioClip sfxGameOver;
+    // [SerializeField] public AudioClip sfxBgMusic;
 
     private AudioSource audioSource;
     private gameStatus currentState = gameStatus.menu;
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour
         showMenu();
         playBtn.onClick.AddListener(() => PlayBtnClicked());
         audioSource = GetComponent<AudioSource>();
+        // audioSource.PlayOneShot(sfxBgMusic);
     }
 
     private void PlayBtnClicked()
@@ -82,19 +85,20 @@ public class GameManager : MonoBehaviour
     }
     public void OnButtonClicked(GameObject btnObj)
     {
-        audioSource.PlayOneShot(sfxClick);
+        audioSource.PlayOneShot(sfxColors);
         var gameButton = btnObj.GetComponent<GameButton>();
         int clrIndex = gameButton.ColorIndex;
         var buttonManager = playScreen.GetComponent<ButtonManager>();
         if (clrIndex == buttonManager.TargetColorIndex)
         {
+            audioSource.PlayOneShot(sfxRightColor);   
             correctBtn = true;
             totalPoints += 10;
             conseqBtns += 1;
             totalPoints += conseqBtns*(conseqBtns - 1);
             AssignColors();
             buttonManager.SetTargetColorLbl();
-            // currentTime += 5.00f;
+            currentTime += 1.0f;
         } 
         else
         {
@@ -102,8 +106,8 @@ public class GameManager : MonoBehaviour
             conseqBtns = 0;
             totalPoints -= 5;
             if (totalPoints < 0)
-                totalPoints = 0;
-            // currentTime += -5.00f;
+                totalPoints = 0; 
+            currentTime += -0.50f;
         }
     }
 
@@ -150,6 +154,7 @@ public class GameManager : MonoBehaviour
         //if /*time’s out and not enough buttons pressed*/
         if (currentState != gameStatus.menu && currentTime <= 0.0)
         {
+            // audioSource.PlayOneShot(sfxGameOver);
             currentState = gameStatus.gameover;
             showMenu();
         }
