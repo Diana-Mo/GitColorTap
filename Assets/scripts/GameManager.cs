@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         playBtn.onClick.AddListener(() => PlayBtnClicked());
         audioSource = GetComponent<AudioSource>();
         // audioSource.PlayOneShot(sfxBgMusic);
+        // highScoreLbl.text = "0";
     }
 
     private void PlayBtnClicked()
@@ -155,12 +156,12 @@ public class GameManager : MonoBehaviour
     {
         //if /*time’s out and not enough buttons pressed*/
         lastScoreLbl.text = currentScoreLbl.text;
-        highScoreLbl.text = lastScoreLbl.text;
-        //Int32.TryParse(string s, out int result)
-        if (currentScoreLbl.text)
+        // highScoreLbl.text = lastScoreLbl.text;
         if (currentState != gameStatus.menu && currentTime <= 0.0)
         {
             // audioSource.PlayOneShot(sfxGameOver);
+            if (int.Parse(lastScoreLbl.text) > int.Parse(highScoreLbl.text))
+                highScoreLbl.text = lastScoreLbl.text;
             currentState = gameStatus.gameover;
             showMenu();
         }

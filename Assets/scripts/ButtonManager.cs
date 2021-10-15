@@ -28,24 +28,6 @@ public class ButtonManager : MonoBehaviour
             // todo: update 'targetColor' field
         }
     }
-    // public List<int> btnColorsSet = new List<int>();
-
-    // button[] btnArray = new button[9];
-    // List<button> btnArray = new ArrayList<button>();
-    //string[] names = new string[] { "name1", "name2", "name3" };
-
-    //{green, pink, white, blue, yellow, purple} RGB
-    // int totalPoints = 0;
-    // int targetColorIndex = -1;
-    //make this a game manager variable and reference here from there through instance
-    // public int TargetColorIndex {
-    //     get {
-    //         return targetColorIndex;
-    //     }
-    //     set {
-    //         targetColorIndex = value;
-    //     }
-    // }
 
     void Start () 
     {
@@ -120,6 +102,25 @@ public class ButtonManager : MonoBehaviour
     //     for (int i = 0; i < MAX_BTNS; i++)
     //     {
     //     img.color = clrs[rndClrIndex];
+    //     }
+    // }
+    
+      // public List<int> btnColorsSet = new List<int>();
+
+    // button[] btnArray = new button[9];
+    // List<button> btnArray = new ArrayList<button>();
+    //string[] names = new string[] { "name1", "name2", "name3" };
+
+    //{green, pink, white, blue, yellow, purple} RGB
+    // int totalPoints = 0;
+    // int targetColorIndex = -1;
+    //make this a game manager variable and reference here from there through instance
+    // public int TargetColorIndex {
+    //     get {
+    //         return targetColorIndex;
+    //     }
+    //     set {
+    //         targetColorIndex = value;
     //     }
     // }
 }
