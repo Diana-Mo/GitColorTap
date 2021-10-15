@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Color[] Colors;
     [SerializeField] private Text currentScoreLbl;
     [SerializeField] private Text currentTimeLbl;
+    [SerializeField] private Text lastScoreLbl;
+    [SerializeField] private Text highScoreLbl;
     float timeStart = 10.3f;
     float currentTime = 0.0f;
     // int targetColorIndex = -1;
@@ -152,6 +154,10 @@ public class GameManager : MonoBehaviour
     public void setCurrentGameState()
     {
         //if /*time’s out and not enough buttons pressed*/
+        lastScoreLbl.text = currentScoreLbl.text;
+        highScoreLbl.text = lastScoreLbl.text;
+        //Int32.TryParse(string s, out int result)
+        if (currentScoreLbl.text)
         if (currentState != gameStatus.menu && currentTime <= 0.0)
         {
             // audioSource.PlayOneShot(sfxGameOver);
@@ -175,6 +181,7 @@ public class GameManager : MonoBehaviour
         {
             case gameStatus.gameover:
                 playBtnLbl.text = "Play Again";
+                // lastScoreLbl.text = currentScoreLbl.text;
                 playScreen.SetActive(false);
                 menuScreen.SetActive(true);
                 break;
