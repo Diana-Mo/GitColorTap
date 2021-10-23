@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text currentTimeLbl;
     [SerializeField] private Text lastScoreLbl;
     [SerializeField] private Text highScoreLbl;
+    [SerializeField] GameObject scoreChangePrefab;
+    [SerializeField] RectTransform endPoint;
+    // [SerializeField] Transform pointParent;
+    int nowPoints = 0;
+    int addedPoints = 0;
     float timeStart = 10.3f;
     float currentTime = 0.0f;
     // int targetColorIndex = -1;
@@ -65,7 +70,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentState = gameStatus.menu;
-        showMenu();
+        ShowMenu();
         playBtn.onClick.AddListener(() => PlayBtnClicked());
         audioSource = GetComponent<AudioSource>();
         // audioSource.PlayOneShot(sfxBgMusic);
@@ -76,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         audioSource.PlayOneShot(sfxClick);
         currentState = gameStatus.play;
-        showMenu();
+        ShowMenu();
         StartTime();
         totalPoints = 0;
     }
@@ -92,15 +97,19 @@ public class GameManager : MonoBehaviour
         var gameButton = btnObj.GetComponent<GameButton>();
         int clrIndex = gameButton.ColorIndex;
         var buttonManager = playScreen.GetComponent<ButtonManager>();
+        nowPoints = totalPoints;
         if (clrIndex == buttonManager.TargetColorIndex)
         {
             audioSource.PlayOneShot(sfxRightColor);   
             correctBtn = true;
+
             totalPoints += 10;
             conseqBtns += 1;
             totalPoints += conseqBtns*(conseqBtns - 1);
+
             AssignColors();
             buttonManager.SetTargetColorLbl();
+
             currentTime += 1.0f;
         } 
         else
@@ -110,8 +119,11 @@ public class GameManager : MonoBehaviour
             totalPoints -= 5;
             if (totalPoints < 0)
                 totalPoints = 0; 
+            
             currentTime += -0.50f;
         }
+        addedPoints = totalPoints - nowPoints;
+        ShowScoreChange(addedPoints, btnObj);
     }
 
     // Update is called once per frame 
@@ -131,7 +143,7 @@ public class GameManager : MonoBehaviour
             currentTime = 0;
         }
         currentTimeLbl.text = currentTime.ToString("0.0");
-        setCurrentGameState();
+        SetCurrentGameState();
     }
 
     void AssignColors()
@@ -145,14 +157,27 @@ public class GameManager : MonoBehaviour
             gameButton1.ColorIndex = randomClrIndex;
         }
     }
+
+    private void ShowScoreChange (int change, GameObject pointParent)
+    {
+        // Transform pointParentTransform = transform.LookAt(pointParent.transform);
+        var inst = Instantiate(scoreChangePrefab, pointParent.transform.position, Quaternion.identity);
+        inst.transform.SetParent(pointParent.transform, true);
+
+        RectTransform rect = inst.GetComponent<RectTransform>();
+        Text text = inst.GetComponent<Text>();
+        text.text = (change > 0 ? "+ " : change < 0 ? "- " : "") + change.ToString();
+        LeanTween.move(rect, endPoint.anchoredPosition, 0.9f).setOnComplete(() => {Destroy(inst);});
+        LeanTween.alphaText(rect, 0.25f, 1.25f);
+    }
     
     // void UpdateScore(int totPoints)
-    // {
+    // {, 1.5
         // currentScoreLbl.text = totalPoints.ToString();
         // return currentColorLbl.text; (if method returns string)
     // }
 
-    public void setCurrentGameState()
+    public void SetCurrentGameState()
     {
         //if /*time’s out and not enough buttons pressed*/
         lastScoreLbl.text = currentScoreLbl.text;
@@ -163,7 +188,7 @@ public class GameManager : MonoBehaviour
             if (int.Parse(lastScoreLbl.text) > int.Parse(highScoreLbl.text))
                 highScoreLbl.text = lastScoreLbl.text;
             currentState = gameStatus.gameover;
-            showMenu();
+            ShowMenu();
         }
         // else if (/*round is zero and zero keys are missed*/)
         // {
@@ -176,7 +201,7 @@ public class GameManager : MonoBehaviour
         //(will this even work or should I have a separate method instead of using gameStatus?)
     }
 
-    public void showMenu()
+    public void ShowMenu()
     {
         switch (currentState)
         {
@@ -227,8 +252,8 @@ public class GameManager : MonoBehaviour
     //     // if (/*num of correct tiles pressed) == total tiles for this round*/)
     //     // {
     //     //     //have the number of tiles to press increase depending on how far into the game the player is
-    //     //     setCurrentGameState();
-    //     //     showMenu();
+    //     //     SetCurrentGameState();
+    //     //     ShowMenu();
     //     // }
     // }
 }
