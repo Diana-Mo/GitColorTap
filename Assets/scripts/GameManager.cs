@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject scoreChangePrefab;
     [SerializeField] RectTransform endPoint;
     // [SerializeField] Transform pointParent;
+    [SerializeField] Color addPointsColor;
+    [SerializeField] Color subtractPointsColor;
+    [SerializeField] Color zeroPointsInvisible;
     int nowPoints = 0;
     int addedPoints = 0;
     float timeStart = 10.3f;
@@ -167,6 +170,8 @@ public class GameManager : MonoBehaviour
         RectTransform rect = inst.GetComponent<RectTransform>();
         Text text = inst.GetComponent<Text>();
         text.text = (change > 0 ? "+ " : change < 0 ? "- " : "") + change.ToString();
+        text.color = change > 0 ? addPointsColor : change < 0 ? subtractPointsColor : zeroPointsInvisible;
+
         LeanTween.move(rect, endPoint.anchoredPosition, 0.9f).setOnComplete(() => {Destroy(inst);});
         LeanTween.alphaText(rect, 0.25f, 1.25f);
     }
