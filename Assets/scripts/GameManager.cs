@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
         ShowMenu();
         playBtn.onClick.AddListener(() => PlayBtnClicked());
         audioSource = GetComponent<AudioSource>();
+        highScoreLbl.text = PlayerPrefs.GetString("highScore", "0");
         // audioSource.PlayOneShot(sfxBgMusic);
         // highScoreLbl.text = "0";
     }
@@ -209,9 +210,17 @@ public class GameManager : MonoBehaviour
         {
             // audioSource.PlayOneShot(sfxGameOver);
             if (int.Parse(lastScoreLbl.text) > int.Parse(highScoreLbl.text))
+            {
                 highScoreLbl.text = lastScoreLbl.text;
+            }
+            PlayerPrefs.SetString("HighScore", highScoreLbl.text);
+            roundNum = 0;
+            correctBtnNumInRound = 0;
+            totalBtnNumInRound = 6;
             currentState = gameStatus.gameover;
             ShowMenu();
+            conseqBtns = 0;
+            currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
         }
         // else if (/*round is zero and zero keys are missed*/)
         // {
