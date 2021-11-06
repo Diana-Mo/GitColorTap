@@ -56,8 +56,10 @@ public class GameManager : MonoBehaviour
     // [SerializeField] private GameObject menuCanvas;
     [SerializeField] private Button playBtn;
     [SerializeField] private Text playBtnLbl;
-    // private Text currentRoundLbl;
-    // private int round = 0;
+    [SerializeField] private Text currentRoundLbl;
+    int roundNum = 0;
+    int correctBtnNumInRound = 0;
+    int totalBtnNumInRound = 6;
     // private gameStatus currentState = gameStatus.menu;
     [SerializeField] public AudioClip sfxClick;
 
@@ -113,7 +115,23 @@ public class GameManager : MonoBehaviour
             AssignColors();
             buttonManager.SetTargetColorLbl();
 
-            currentTime += 1.0f;
+            // currentTime += 1.0f;
+            correctBtnNumInRound += 1;
+            if (correctBtnNumInRound >= totalBtnNumInRound)
+            {
+                // currentTime += 1.0f;
+                roundNum += 1;
+                correctBtnNumInRound = 0;
+                timeStart -= 0.3f;
+                currentTime = timeStart;
+                if (roundNum % 2 == 0)
+                {
+                    totalBtnNumInRound += 1;
+                }
+                // currentState = gameStatus.nextround;
+            }
+            currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
+
         } 
         else
         {
@@ -158,7 +176,7 @@ public class GameManager : MonoBehaviour
             var gameButton1 = currButton.GetComponent<GameButton>();
             // Debug.Log("randm color: " + randomClrIndex);
             gameButton1.ColorIndex = randomClrIndex;
-        }
+        } 
     }
 
     private void ShowScoreChange (int change, GameObject pointParent)
@@ -228,8 +246,15 @@ public class GameManager : MonoBehaviour
 
             //TO DO:
             case gameStatus.nextround:
+                // roundNum += 1;
+                // correctBtnNumInRound = 0;
+                // timeStart -= 0.3f;
+                // if (roundNum % 2 == 0)
+                // {
+                //     totalBtnNumInRound += 1;
+                // }
                 //update the roundNum
-                //reset time?
+                //reset time
                 //Score + (roundNum)*10
                 break;
         }
