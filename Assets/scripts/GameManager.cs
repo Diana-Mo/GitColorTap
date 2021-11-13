@@ -39,11 +39,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] RectTransform endPoint;
     // [SerializeField] Transform pointParent;
     [SerializeField] Color addPointsColor;
+
     [SerializeField] Color subtractPointsColor;
     [SerializeField] Color zeroPointsInvisible;
     int nowPoints = 0;
     int addedPoints = 0;
-    float timeStart = 10.3f;
+    float timeStart = 12.3f;
     float currentTime = 0.0f;
     // int targetColorIndex = -1;
     // Color targetColor;
@@ -221,6 +222,7 @@ public class GameManager : MonoBehaviour
             ShowMenu();
             conseqBtns = 0;
             currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
+            StartTime();
         }
         // else if (/*round is zero and zero keys are missed*/)
         // {
@@ -244,8 +246,10 @@ public class GameManager : MonoBehaviour
                 menuScreen.SetActive(true);
                 break;
             case gameStatus.play:
+                // StartTime();
                 playScreen.SetActive(true);
                 menuScreen.SetActive(false);
+                
                 break;
             case gameStatus.menu:
                 playBtnLbl.text = "Play";
