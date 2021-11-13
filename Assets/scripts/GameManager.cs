@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
 
     private AudioSource audioSource;
     private gameStatus currentState = gameStatus.menu;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +78,9 @@ public class GameManager : MonoBehaviour
         ShowMenu();
         playBtn.onClick.AddListener(() => PlayBtnClicked());
         audioSource = GetComponent<AudioSource>();
-        highScoreLbl.text = PlayerPrefs.GetString("highScore", "0");
+        // LoadPrefs();
+        highScoreLbl.text = LoadedPrefs().ToString();
+        // PlayerPrefs.GetString("highScore", "0");
         // audioSource.PlayOneShot(sfxBgMusic);
         // highScoreLbl.text = "0";
     }
@@ -214,7 +215,8 @@ public class GameManager : MonoBehaviour
             {
                 highScoreLbl.text = lastScoreLbl.text;
             }
-            PlayerPrefs.SetString("HighScore", highScoreLbl.text);
+            // PlayerPrefs.SetString("HighScore", highScoreLbl.text);
+            SavePrefs(int.Parse(highScoreLbl.text));
             roundNum = 0;
             correctBtnNumInRound = 0;
             totalBtnNumInRound = 6;
@@ -271,8 +273,19 @@ public class GameManager : MonoBehaviour
                 //Score + (roundNum)*10
                 break;
         }
-
         // playBtn.gameObject.SetActive(true);
+    }
+    private void SavePrefs(int lastScore)
+    {
+        PlayerPrefs.SetInt("HighScore", lastScore);
+        PlayerPrefs.Save();
+    }
+    // PlayerPrefs.SetInt(“HighScore”, 50);
+
+    private int LoadedPrefs()
+    {
+        int loadedHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        return loadedHighScore;
     }
 
     // public void playBtnPressed() 

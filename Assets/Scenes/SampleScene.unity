@@ -1529,7 +1529,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 555.1
+  m_Text: xxxx.x
 --- !u!222 &1210527452
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1822,7 +1822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 500000
+  m_Text: xxxxxxx
 --- !u!222 &1314941076
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1901,7 +1901,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 500000
+  m_Text: xxx
 --- !u!222 &1339487514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2842,6 +2842,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1307612301}
     m_Modifications:
+    - target: {fileID: 5252500650870090994, guid: 61382127235014e1cbdad2b4a6344b84,
+        type: 3}
+      propertyPath: m_Text
+      value: 'ROUND x: x/x'
+      objectReference: {fileID: 0}
     - target: {fileID: 5252500650870090994, guid: 61382127235014e1cbdad2b4a6344b84,
         type: 3}
       propertyPath: m_Color.b
