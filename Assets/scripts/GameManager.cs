@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         // LoadPrefs();
         highScoreLbl.text = LoadedPrefs().ToString();
-        roundTimeStart = timeStart;
         // PlayerPrefs.GetString("highScore", "0");
         // audioSource.PlayOneShot(sfxBgMusic);
         // highScoreLbl.text = "0";
