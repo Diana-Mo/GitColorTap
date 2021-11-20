@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Color zeroPointsInvisible;
     int nowPoints = 0;
     int addedPoints = 0;
-    float timeStart = 12.3f;
+    float timeStart = 10.3f;
+    float roundTimeStart = 0.0f;
     float currentTime = 0.0f;
     // int targetColorIndex = -1;
     // Color targetColor;
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         // LoadPrefs();
         highScoreLbl.text = LoadedPrefs().ToString();
+        roundTimeStart = timeStart;
         // PlayerPrefs.GetString("highScore", "0");
         // audioSource.PlayOneShot(sfxBgMusic);
         // highScoreLbl.text = "0";
@@ -96,9 +98,11 @@ public class GameManager : MonoBehaviour
 
     private void StartTime()
     {
-        currentTimeLbl.text = timeStart.ToString();
-        currentTime = timeStart;
+        roundTimeStart = timeStart;
+        currentTimeLbl.text = roundTimeStart.ToString();
+        currentTime = roundTimeStart;
     }
+
     public void OnButtonClicked(GameObject btnObj)
     {
         audioSource.PlayOneShot(sfxColors);
@@ -125,8 +129,8 @@ public class GameManager : MonoBehaviour
                 // currentTime += 1.0f;
                 roundNum += 1;
                 correctBtnNumInRound = 0;
-                timeStart -= 0.3f;
-                currentTime = timeStart;
+                roundTimeStart -= 0.3f;
+                currentTime = roundTimeStart;
                 if (roundNum % 2 == 0)
                 {
                     totalBtnNumInRound += 1;
@@ -155,8 +159,8 @@ public class GameManager : MonoBehaviour
     {
         // UpdateScore(totalPoints);
         currentScoreLbl.text = totalPoints.ToString();
-        // timeStart -= Time.deltaTime;
-        // currentTimeLbl.text = timeStart.ToString("0.0");
+        // roundTimeStart -= Time.deltaTime;
+        // currentTimeLbl.text = roundTimeStart.ToString("0.0");
         if (currentTime >= 0.00f)
         {
         currentTime = currentTime - Time.deltaTime; 
@@ -224,6 +228,7 @@ public class GameManager : MonoBehaviour
             ShowMenu();
             conseqBtns = 0;
             currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
+            Debug.Log("currT: " + currentTime + " " + "RtimeSt: " + roundTimeStart);
             StartTime();
         }
         // else if (/*round is zero and zero keys are missed*/)
@@ -263,7 +268,7 @@ public class GameManager : MonoBehaviour
             case gameStatus.nextround:
                 // roundNum += 1;
                 // correctBtnNumInRound = 0;
-                // timeStart -= 0.3f;
+                // roundTimeStart -= 0.3f;
                 // if (roundNum % 2 == 0)
                 // {
                 //     totalBtnNumInRound += 1;
