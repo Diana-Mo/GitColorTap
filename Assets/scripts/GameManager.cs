@@ -9,6 +9,11 @@ public enum gameStatus
 }
 
 public class GameManager : MonoBehaviour
+
+// set game states, save/load highscore, manage time
+// take care all things that happen on click of game buttons
+// - score, noises, time, rounds, floating effect
+
 {
     private static GameManager instance;
 
@@ -227,7 +232,7 @@ public class GameManager : MonoBehaviour
             ShowMenu();
             conseqBtns = 0;
             currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
-            Debug.Log("currT: " + currentTime + " " + "RtimeSt: " + roundTimeStart);
+            // Debug.Log("currT: " + currentTime + " " + "RtimeSt: " + roundTimeStart);
             StartTime();
         }
         // else if (/*round is zero and zero keys are missed*/)

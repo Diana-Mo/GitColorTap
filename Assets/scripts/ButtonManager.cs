@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
+
+// creates game buttons, numbers them, calls OnButtonClicked and sets Target Color
+
 {
-    
-    // [SerializeField] private Text btnText;
-    // [SerializeField] private Color btnColor;
     [SerializeField] private int MAX_BTNS;
     // [SerializeField] 
     private GameObject[] buttonObjects;
@@ -25,7 +25,6 @@ public class ButtonManager : MonoBehaviour
         }
         set {
             targetColorIndex_ = value;
-            // todo: update 'targetColor' field
         }
     }
 

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
 public class GameButton : MonoBehaviour
+
+// gets game button info and assigns them colors
+
 {
     [SerializeField]
     private int colorIndex = -1;    
@@ -17,7 +20,6 @@ public class GameButton : MonoBehaviour
         }
         set {
             colorIndex = value;
-            // i=xfdsl;jj //vs code stopped seeing errors, however they still show up in unity console
             UpdateImageColor();
         }
     }
