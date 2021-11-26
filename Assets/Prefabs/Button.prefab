@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1397120351717140533}
   - component: {fileID: 1397120351717140536}
   - component: {fileID: 7144308696149488881}
+  - component: {fileID: 8263987654354855135}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: c9357d25a90c741a9b570fb20dcd986c, type: 3}
+      - m_Target: {fileID: 11500000, guid: 672b0739a8c8b4d5d8d4911786d52640, type: 3}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -173,6 +174,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17a6c971ceac413bbd15576c87e3542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorIndex: -1
+--- !u!114 &8263987654354855135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397120351717140531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672b0739a8c8b4d5d8d4911786d52640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreChangePrefab: {fileID: 5235996274256254788, guid: e9718a1ff9886434c8b81bdab0a503b1,
+    type: 3}
+  addPointsColor: {r: 0.4975769, g: 0.8962264, b: 0.34242615, a: 1}
+  subtractPointsColor: {r: 1, g: 0.277, b: 0, a: 1}
+  zeroPointsInvisible: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  endPoint: {fileID: 5720088581453209528, guid: 40b7e30f24a7a47c59c4b12a05834ebd,
+    type: 3}
+  buttonObject: {fileID: 1397120351717140531}
 --- !u!1 &1397120352528710709
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Color subtractPointsColor;
     [SerializeField] Color zeroPointsInvisible;
     int nowPoints = 0;
-    int addedPoints = 0;
+    public int addedPoints = 0;
     float timeStart = 10.3f;
     float roundTimeStart = 0.0f;
     float currentTime = 0.0f;
@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public AudioClip sfxRightColor;
     [SerializeField] public AudioClip sfxGameOver;
     // [SerializeField] public AudioClip sfxBgMusic;
+    private SfxManager sfxScript;
 
     private AudioSource audioSource;
     private gameStatus currentState = gameStatus.menu;
@@ -84,6 +85,7 @@ public class GameManager : MonoBehaviour
         ShowMenu();
         playBtn.onClick.AddListener(() => PlayBtnClicked());
         audioSource = GetComponent<AudioSource>();
+        sfxScript = GetComponent<SfxManager>();
         // LoadPrefs();
         highScoreLbl.text = LoadedPrefs().ToString();
         // PlayerPrefs.GetString("highScore", "0");
@@ -155,7 +157,7 @@ public class GameManager : MonoBehaviour
             currentTime += -0.50f;
         }
         addedPoints = totalPoints - nowPoints;
-        ShowScoreChange(addedPoints, btnObj);
+        // sfxScript.ShowScoreChange(addedPoints, btnObj);
     }
 
     // Update is called once per frame 
@@ -190,20 +192,20 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    private void ShowScoreChange (int change, GameObject pointParent)
-    {
-        // Transform pointParentTransform = transform.LookAt(pointParent.transform);
-        var inst = Instantiate(scoreChangePrefab, pointParent.transform.position, Quaternion.identity);
-        inst.transform.SetParent(pointParent.transform, true);
+    // private void ShowScoreChange (int change, GameObject pointParent)
+    // {
+    //     // Transform pointParentTransform = transform.LookAt(pointParent.transform);
+    //     var inst = Instantiate(scoreChangePrefab, pointParent.transform.position, Quaternion.identity);
+    //     inst.transform.SetParent(pointParent.transform, true);
 
-        RectTransform rect = inst.GetComponent<RectTransform>();
-        Text text = inst.GetComponent<Text>();
-        text.text = (change > 0 ? "+ " : change < 0 ? "- " : "") + change.ToString();
-        text.color = change > 0 ? addPointsColor : change < 0 ? subtractPointsColor : zeroPointsInvisible;
+    //     RectTransform rect = inst.GetComponent<RectTransform>();
+    //     Text text = inst.GetComponent<Text>();
+    //     text.text = (change > 0 ? "+ " : change < 0 ? "- " : "") + change.ToString();
+    //     text.color = change > 0 ? addPointsColor : change < 0 ? subtractPointsColor : zeroPointsInvisible;
 
-        LeanTween.move(rect, endPoint.anchoredPosition, 0.9f).setOnComplete(() => {Destroy(inst);});
-        LeanTween.alphaText(rect, 0.25f, 1.25f);
-    }
+    //     LeanTween.move(rect, endPoint.anchoredPosition, 0.9f).setOnComplete(() => {Destroy(inst);});
+    //     LeanTween.alphaText(rect, 0.25f, 1.25f);
+    // }
     
     // void UpdateScore(int totPoints)
     // {, 1.5
