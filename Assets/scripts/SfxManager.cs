@@ -38,6 +38,10 @@ public class SfxManager : MonoBehaviour
     GameObject pointParent;
     [SerializeField] GameObject buttonObject;
 
+    //audio for 6 colors possibly sacura themed (melodic pentatonic)
+    //musical progression for each of the colors
+    //audio for breaking pattern
+
     void Start () 
     {
         Button button = buttonObject.GetComponent<Button>();
@@ -61,6 +65,11 @@ public class SfxManager : MonoBehaviour
 
         LeanTween.move(rect, endPointT.anchoredPosition, 0.9f).setOnComplete(() => {Destroy(inst);});
         LeanTween.alphaText(rect, 0.25f, 1.25f);
+    }
+
+    public void ButtonNotes()
+    {
+        //get the color component of the button
     }
 
 }

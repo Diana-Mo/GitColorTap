@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject playScreen;
     [SerializeField] public GameObject menuScreen;
     int conseqBtns = 0;
-    bool correctBtn = false;
+    // bool correctBtn = false;
     // [SerializeField] private GameObject menuCanvas;
     [SerializeField] private Button playBtn;
     [SerializeField] private Text playBtnLbl;
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         if (clrIndex == buttonManager.TargetColorIndex)
         {
             audioSource.PlayOneShot(sfxRightColor);   
-            correctBtn = true;
+            // correctBtn = true; 
 
             totalPoints += 10;
             conseqBtns += 1;
@@ -144,20 +144,19 @@ public class GameManager : MonoBehaviour
                 // currentState = gameStatus.nextround;
             }
             currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
-
-        } 
-        else
-        {
-            correctBtn = false;
-            conseqBtns = 0;
-            totalPoints -= 5;
-            if (totalPoints < 0)
-                totalPoints = 0; 
-            
-            currentTime += -0.50f;
         }
-        addedPoints = totalPoints - nowPoints;
-        // sfxScript.ShowScoreChange(addedPoints, btnObj);
+        else
+            {
+                // correctBtn = false;
+                conseqBtns = 0;
+                totalPoints -= 5;
+                if (totalPoints < 0)
+                    totalPoints = 0; 
+                
+                currentTime += -0.50f;
+            }
+            addedPoints = totalPoints - nowPoints;
+            // sfxScript.ShowScoreChange(addedPoints, btnObj);
     }
 
     // Update is called once per frame 
@@ -297,6 +296,12 @@ public class GameManager : MonoBehaviour
     {
         int loadedHighScore = PlayerPrefs.GetInt("HighScore", 0);
         return loadedHighScore;
+    }
+
+    public void ResetHighScore()
+    {
+        PlayerPrefs.DeleteKey("HighScore");
+        highScoreLbl.text = LoadedPrefs().ToString();
     }
 
     // public void playBtnPressed() 
