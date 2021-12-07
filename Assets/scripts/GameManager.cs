@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
                 }
                 // currentState = gameStatus.nextround;
             }
-            currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
+            // currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
         }
         else
             {
@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
         }
         currentTimeLbl.text = currentTime.ToString("0.0");
         SetCurrentGameState();
+        currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
     }
 
     void AssignColors()
@@ -232,7 +233,7 @@ public class GameManager : MonoBehaviour
             currentState = gameStatus.gameover;
             ShowMenu();
             conseqBtns = 0;
-            currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
+            // currentRoundLbl.text = "ROUND " + roundNum.ToString() + ": " + correctBtnNumInRound.ToString() + "/" + totalBtnNumInRound.ToString();
             // Debug.Log("currT: " + currentTime + " " + "RtimeSt: " + roundTimeStart);
             StartTime();
         }
